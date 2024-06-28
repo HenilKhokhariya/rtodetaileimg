@@ -1,22 +1,14 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
 
 const axios = require("axios");
 const cheerio = require("cheerio");
-let data = [];
-const corsObject = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  credentials: true,
-  methods: "POST,GET,PUT,DELETE",
-};
-app.use(cors(corsObject));
+
 app.use(express.json());
 
-app.get("/api/data", async (req, res) => {
+app.post("/api/data", async (req, res) => {
   try {
     var img = "";
     const vNumber = await req.body.vnumber;
