@@ -9,10 +9,10 @@ const corsObject = {
   methods: "POST,GET,PUT,DELETE",
 };
 const app = express();
-const PORT = process.env.PORT | 5000;
+
 app.use(express.json());
 app.use(cors(corsObject));
 app.use("/api", router);
-app.listen(PORT, (res) => {
+app.listen(process.env.PORT, (res) => {
   console.log("Server is running on port " + PORT);
 });
