@@ -16,23 +16,18 @@ app.post("/api/data", async (req, res) => {
     const vNumber = await req.body.vnumber;
 
     const URL = `https://www.carinfo.app/rc-details/${vNumber}`;
-    await axios
-      .get(URL)
-      .then(async (res) => {
-        let $ = cheerio.load(res.data);
+    const respons = await axios.get(URL);
+    let $ = cheerio.load(respons.data);
 
-        // $("div .css-yd8sa2").each(function (v, i) {
-        //   const Name = $(this).find("div .css-1tay05u p").text();
-        //   console.log(Name);
-        // });
+    // $("div .css-yd8sa2").each(function (v, i) {
+    //   const Name = $(this).find("div .css-1tay05u p").text();
+    //   console.log(Name);
+    // });
 
-        $("div .css-11gihrn").each(function (index, el) {
-          img = $(this).find("img").attr("src");
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    $("div .css-11gihrn").each(function (index, el) {
+      img = $(this).find("img").attr("src");
+    });
+
     res.status(200).json({ img: img });
   } catch (error) {
     console.log(data);
