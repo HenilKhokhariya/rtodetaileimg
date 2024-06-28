@@ -13,9 +13,9 @@ const Data = async (req, res) => {
     var img = "";
     const vNumber = await req.body.vnumber;
     await axios
-      .get(`https://www.carinfo.app/rc-details/${vNumber}`)
-      .then((result) => {
-        const $ = cheerio.load(result.data);
+      .get(`https://www.carinfo.app/rc-details/GJ3588`)
+      .then(async (result) => {
+        const $ = await cheerio.load(result.data);
 
         // $("div .css-yd8sa2").each(function (v, i) {
         //   const Name = $(this).find("div .css-1tay05u p").text();
