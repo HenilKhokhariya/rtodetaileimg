@@ -20,11 +20,9 @@ app.post("/api/data", async (req, res) => {
   try {
     var img = "";
     const vNumber = await req.body.vnumber;
-    await axios({
-      method: "get",
-      baseURL: `https://www.carinfo.app/rc-details/${vNumber}`,
-      url: "requisitions",
-    })
+    const URL = `https://www.carinfo.app/rc-details/${vNumber}`;
+    await axios
+      .get(URL)
       .then(async (res) => {
         let $ = cheerio.load(res.data);
 
