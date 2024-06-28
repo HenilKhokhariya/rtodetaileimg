@@ -30,7 +30,7 @@ app.post("/data", async (req, res) => {
 
     res.status(200).json({ img: img });
   } catch (error) {
-    console.log(data);
+    console.log(error);
   }
 });
 
