@@ -16,13 +16,12 @@ const corsObject = {
 app.use(cors(corsObject));
 app.use(express.json());
 
-app.post("/api/data", async (req, res) => {
+app.get("/api/data", async (req, res) => {
   try {
     var img = "";
     const vNumber = await req.body.vnumber;
 
     const URL = `https://www.carinfo.app/rc-details/${vNumber}`;
-    console.log(URL);
     await axios
       .get(URL)
       .then(async (res) => {
