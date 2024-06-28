@@ -7,7 +7,9 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.status(200).send("Hello World!");
+});
 app.post("/api/data", async (req, res) => {
   try {
     var img = "";
