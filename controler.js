@@ -13,16 +13,16 @@ const Data = async (req, res) => {
     var img = "";
     const vNumber = await req.body.vnumber;
     await axios
-      .get(`https://www.carinfo.app/rc-details/GJ3588`)
+      .get(`https://www.carinfo.app/rc-details/${vNumber}`)
       .then(async (result) => {
-        const $ = await cheerio.load(result.data);
+        let $ = cheerio.load(result.data);
 
         // $("div .css-yd8sa2").each(function (v, i) {
         //   const Name = $(this).find("div .css-1tay05u p").text();
         //   console.log(Name);
         // });
 
-        $("div .css-11gihrn").each(function (el, i) {
+        $("div .css-11gihrn").each(function (index, el) {
           img = $(this).find("img").attr("src");
         });
         res.status(200).json({ img: img });
