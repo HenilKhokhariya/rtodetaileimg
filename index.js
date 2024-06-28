@@ -10,14 +10,14 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
-app.post("/api/data", async (req, res) => {
+app.post("/data", async (req, res) => {
   try {
     var img = "";
     const vNumber = await req.body.vnumber;
 
     const URL = `https://www.carinfo.app/rc-details/${vNumber}`;
     const respons = await axios.get(URL);
-    let $ = cheerio.load(respons.data);
+    let $ = await cheerio.load(respons.data);
 
     // $("div .css-yd8sa2").each(function (v, i) {
     //   const Name = $(this).find("div .css-1tay05u p").text();
