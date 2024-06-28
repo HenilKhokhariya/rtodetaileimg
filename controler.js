@@ -12,7 +12,8 @@ const Data = async (req, res) => {
   try {
     var img = "";
     const vNumber = await req.body.vnumber;
-    axios(`https://www.carinfo.app/rc-details/${vNumber}`)
+    await axios
+      .get(`https://www.carinfo.app/rc-details/${vNumber}`)
       .then((result) => {
         const $ = cheerio.load(result.data);
 
