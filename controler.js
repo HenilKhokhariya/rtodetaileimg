@@ -23,7 +23,6 @@ const Data = async (req, res) => {
 
         $("div .css-11gihrn").each(function (el, i) {
           img = $(this).find("img").attr("src");
-          console.log($(this).find("img").attr("src"));
         });
         res.status(200).json({ img: img });
       })
